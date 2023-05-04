@@ -8,9 +8,9 @@ public class Main {
     static String Str_4 = "4. **删除英雄** 英雄太弱，不需要，删除掉。";
     static String Str_5 = "5. **退出系统** 结束程序。";
 
-    static List <Map> li_hero = new ArrayList<>();
+    static List <Map<String,String>> li_hero = new ArrayList<>();
 
-    static HashMap create_hero(){
+    static HashMap<String,String> create_hero(){
         Scanner input = new Scanner(System.in);
         System.out.println("请输入英雄的名称：");
         String str_name = input.next();
@@ -18,11 +18,11 @@ public class Main {
         String str_blood = input.next();
         System.out.println("请输入英雄的攻击力：");
         String str_power = input.next();
-        Map<String,String> hero = new HashMap<>();
+        HashMap<String,String> hero = new HashMap<>();
         hero.put("name",str_name);
         hero.put("blood",str_blood);
         hero.put("power",str_power);
-        return (HashMap) hero;
+        return hero;
 
     }
 
@@ -31,8 +31,8 @@ public class Main {
         System.out.println("请输入英雄的名称：");
         String str_name = input.next();
         boolean ff = false;
-        for(Map hero:li_hero ){
-            if (str_name.equalsIgnoreCase((String) hero.get("name"))){
+        for(Map<String,String> hero:li_hero ){
+            if (str_name.equalsIgnoreCase(hero.get("name"))){
                 System.out.println("英雄 " + str_name+ " 的信息为: "+ hero);
                 ff = true;
             }
@@ -50,7 +50,7 @@ public class Main {
         String str_name = input.next();
         boolean ff = false;
         for (int i = 0; i<li_hero.size(); i++){
-            if (str_name.equalsIgnoreCase((String) li_hero.get(i).get("name"))) {
+            if (str_name.equalsIgnoreCase(li_hero.get(i).get("name"))) {
                 System.out.println("请问你要将血量修改为多少？ ");
                 str_blood = input.next();
                 li_hero.get(i).replace("blood", str_blood);
@@ -67,8 +67,8 @@ public class Main {
         System.out.println("请输入英雄的名称：");
         String str_name = input.next();
         boolean ff = false;
-        for(Map hero:li_hero ){
-            if (str_name.equalsIgnoreCase((String) hero.get("name"))){
+        for(Map<String,String> hero:li_hero ){
+            if (str_name.equalsIgnoreCase(hero.get("name"))){
                 li_hero.remove(hero);
                 ff = true;
                 System.out.println("删除之后所有的英雄的数据信息为 "+li_hero);
